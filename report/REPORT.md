@@ -20,7 +20,8 @@
 Nguồn evidence: `classification_predictions.json`, sample `traffic`.
 
 - Record hạng 1 (`class_id`, `class_name`, `rank`, `score`, `taxonomy_name`):
-> ```json
+
+    > ```json
   > {
   >   "taxonomy_name": "ImageNet-1K",
   >   "rank": 1,
@@ -74,20 +75,17 @@ Nguồn evidence: `segmentation_predictions.json` và `visuals/segmentation_pred
 
 - Một record (`instance_id`, `class_name`, `score`, số điểm và một phần `polygon_xy`):
 
-    > {
-    "instance_id": "traffic-001",
-    "class_name": "bus",
-    "score": 0.925745,
-    "polygon_xy": [
-      [
-        148.0,
-        189.0
-      ],
-      [
-        147.0,
-        190.0
-      ]]
- }
+    > ```json
+  > {
+  >   "instance_id": "traffic-001",
+  >   "class_name": "bus",
+  >   "score": 0.925745,
+  >   "polygon_xy": [
+  >     [148.0, 189.0],
+  >     [147.0, 190.0]
+  >   ]
+  > }
+  > ```
 - Polygon bổ sung chi tiết gì so với box?
     > Bounding box chỉ cho biết hình chữ nhật bao quanh vật thể, còn polygon mô tả đường viền chính xác của vật thể theo nhiều điểm tọa độ.
 - `instance_id` dùng để làm gì và không phải loại ID nào?
