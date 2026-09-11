@@ -20,13 +20,15 @@
 Nguồn evidence: `classification_predictions.json`, sample `traffic`.
 
 - Record hạng 1 (`class_id`, `class_name`, `rank`, `score`, `taxonomy_name`):
-{
-    "taxonomy_name": "ImageNet-1K",
-    "rank": 1,
-    "class_id": 468,
-    "class_name": "cab",
-    "score": 0.510915
-  }
+> ```json
+  > {
+  >   "taxonomy_name": "ImageNet-1K",
+  >   "rank": 1,
+  >   "class_id": 468,
+  >   "class_name": "cab",
+  >   "score": 0.510915
+  > }
+  > 
 - Record này mô tả toàn ảnh như thế nào?
     > Mô hình đánh giá lớp phù hợp nhất là cab (taxi) với độ tin cậy khoảng 51%.
 - Ai định nghĩa class list mà checkpoint có thể dự đoán?
@@ -42,18 +44,16 @@ Nguồn evidence: `classification_predictions.json`, sample `traffic`.
 Nguồn evidence: `detection_predictions.json` và `visuals/detection_predictions.png`, sample `kitchen`.
 
 - Một record (`class_name`, `score`, `bbox_xyxy`, `bbox_width`, `bbox_height`):
-> {
-    "class_name": "bus",
-    "score": 0.912557,
-    "bbox_xyxy": [
-      93.17,
-      187.95,
-      223.01,
-      320.91
-    ],
-    "bbox_width": 129.84,
-    "bbox_height": 132.96
-  }
+
+    > ```json
+  > {
+  >   "class_name": "bus",
+  >   "score": 0.912557,
+  >   "bbox_xyxy": [93.17, 187.95, 223.01, 320.91],
+  >   "bbox_width": 129.84,
+  >   "bbox_height": 132.96
+  > }
+  > 
 - Diễn giải vị trí box bằng lời:
     > Bounding box bắt đầu tại điểm (93, 188) và kết thúc tại (223, 321), với kích thước khoảng 130 × 133 pixel.
 - So sánh số prediction ở hai threshold:
