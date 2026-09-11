@@ -42,8 +42,7 @@ Nguồn evidence: `classification_predictions.json`, sample `traffic`.
 Nguồn evidence: `detection_predictions.json` và `visuals/detection_predictions.png`, sample `kitchen`.
 
 - Một record (`class_name`, `score`, `bbox_xyxy`, `bbox_width`, `bbox_height`):
-
-    > {
+> {
     "class_name": "bus",
     "score": 0.912557,
     "bbox_xyxy": [
@@ -64,17 +63,18 @@ Nguồn evidence: `detection_predictions.json` và `visuals/detection_prediction
 - Đề xuất một quy tắc box chặt:
     > Bounding box phải ôm sát phần nhìn thấy của vật thể, không lấy nền dư và không suy đoán phần bị che khuất.
 - Với object bị che khuất/cắt mép, điều gì cần guideline hoặc escalation quyết định?
-    > Với vật thể bị che khuất hoặc cắt mép, guideline cần quy định:
-        - Che khuất (occlusion): Chỉ vẽ box bao phần nhìn thấy, không suy đoán phần bị khuất.
-        - Cắt mép ảnh (truncation): Box được phép chạm mép ảnh, không vượt ra ngoài khung hình.
-        - Escalation: Nếu lớp hoặc ranh giới vật thể quá mơ hồ, chuyển reviewer/QA quyết định để đảm bảo nhất quán.
+  > **Với vật thể bị che khuất hoặc cắt mép, guideline cần quy định:**
+  >
+  > - Che khuất (occlusion): Chỉ vẽ box bao phần nhìn thấy, không suy đoán phần bị khuất.
+  > - Cắt mép ảnh (truncation): Box được phép chạm mép ảnh, không vượt ra ngoài khung hình.
+  > - Escalation: Nếu lớp hoặc ranh giới vật thể quá mơ hồ, chuyển reviewer/QA quyết định để đảm bảo nhất quán.
 ## 3. Phân đoạn theo từng đối tượng – polygon cho mỗi instance
 
 Nguồn evidence: `segmentation_predictions.json` và `visuals/segmentation_prediction.png`, sample `kitchen`.
 
 - Một record (`instance_id`, `class_name`, `score`, số điểm và một phần `polygon_xy`):
 
- > {
+    > {
     "instance_id": "traffic-001",
     "class_name": "bus",
     "score": 0.925745,
@@ -95,10 +95,9 @@ Nguồn evidence: `segmentation_predictions.json` và `visuals/segmentation_pred
 - Đề xuất một quy tắc biên mask:
     > Mask phải bám sát biên nhìn thấy của vật thể, không lấn nền, không để hở khoảng trống và không vẽ phần bị khuất.
 - Với vùng mờ/tiếp xúc/che khuất, điều gì cần guideline hoặc escalation quyết định?
-    > 
-    + Vùng mờ: bám theo ranh giới nhìn thấy rõ nhất.
-    + Hai vật thể tiếp xúc: mỗi vật thể có một mask riêng, không gộp.
-    + Che khuất: chỉ tô phần nhìn thấy; nếu ranh giới quá mơ hồ thì escalation cho QA/reviewer quyết định.
+    > + Vùng mờ: bám theo ranh giới nhìn thấy rõ nhất.
+    > + Hai vật thể tiếp xúc: mỗi vật thể có một mask riêng, không gộp.
+    > + Che khuất: chỉ tô phần nhìn thấy; nếu ranh giới quá mơ hồ thì escalation cho QA/reviewer quyết định.
 ## 4. Vòng đời và kiểm tra chất lượng
 
 `ảnh thô → guideline → ground truth → huấn luyện → prediction → QC/rework`
